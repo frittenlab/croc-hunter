@@ -5,14 +5,14 @@
     "cpu": "10m",
     "memory": "128Mi",
     "test": true,
-    "hostname": "croc-hunter.acs.az.estrado.io"
+    "hostname": game.unipig.de 
   },
   "container_repo": {
-    "host": "quay.io",
-    "master_acct": "lachie83",
-    "alt_acct": "lachie83",
-    "jenkins_creds_id": "quay_creds",
-    "repo": "croc-hunter",
+    "host": "hub.docker.com",
+    "master_acct": "spearce",
+    "alt_acct": "spearce",
+    "jenkins_creds_id": "docker_creds",
+    "repo": "k8s",
     "dockeremail": ".",
     "dockerfile": "./",
     "image_scanning": false
