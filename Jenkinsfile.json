@@ -11,7 +11,7 @@
     "host": "docker.io",
     "master_acct": "spearce",
     "jenkins_creds_id": "docker_creds",
-    "repo": "k8s",
+    "repo": "croc-hunter",
     "dockeremail": ".",
     "dockerfile": "./",
     "image_scanning": false
