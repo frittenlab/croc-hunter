@@ -114,9 +114,8 @@ volumes:[
             auth_id   : config.container_repo.jenkins_creds_id,
             image_scanning: config.container_repo.image_scanning
         )
-
     }
-
+}
     if (env.BRANCH_NAME =~ "PR-*" ) {
       stage ('deploy to k8s') {
         container('helm') {
