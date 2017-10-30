@@ -107,7 +107,6 @@ volumes:[
         // build and publish container
         pipeline.containerBuildPub(
             dockerfile: config.container_repo.dockerfile,
-            host      : config.container_repo.host,
             acct      : acct,
             repo      : config.container_repo.repo,
             tags      : image_tags_list,

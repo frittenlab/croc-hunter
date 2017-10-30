@@ -8,9 +8,7 @@
     "hostname": "game.unipig.de"  
   },
   "container_repo": {
-    "host": "docker.io", 
     "master_acct": "spearce",
-    "alt_acct": "spearce",
     "jenkins_creds_id": "docker_creds",
     "repo": "k8s",
     "dockeremail": ".",
