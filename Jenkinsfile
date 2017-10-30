@@ -101,7 +101,7 @@ volumes:[
         // perform docker login to container registry as the docker-pipeline-plugin doesn't work with the next auth json format
         withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: config.container_repo.jenkins_creds_id,
                         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD} ${config.container_repo.host}"
+          sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD}"
         }
 
         // build and publish container
