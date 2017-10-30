@@ -3,7 +3,7 @@
 // load pipeline functions
 // Requires pipeline-github-lib plugin to load library from github
 
-@Library('github.com/simon-k8s/jenkins-pipeline@dev')
+@Library('github.com/lachie83/jenkins-pipeline@dev')
 
 def pipeline = new io.estrado.Pipeline()
 
@@ -101,12 +101,13 @@ volumes:[
         // perform docker login to container registry as the docker-pipeline-plugin doesn't work with the next auth json format
         withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: config.container_repo.jenkins_creds_id,
                         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD}"
+          sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD} ${config.container_repo.host}"
         }
 
         // build and publish container
         pipeline.containerBuildPub(
             dockerfile: config.container_repo.dockerfile,
+            host      : config.container_repo.host,
             acct      : acct,
             repo      : config.container_repo.repo,
             tags      : image_tags_list,
@@ -118,7 +119,7 @@ volumes:[
         println "Add container image tags to anchore scanning list"
         
         def tag = image_tags_list.get(0)
-        def imageLine = "${acct}/${config.container_repo.repo}:${tag}" + ' ' + env.WORKSPACE + '/Dockerfile'
+        def imageLine = "${config.container_repo.host}/${acct}/${config.container_repo.repo}:${tag}" + ' ' + env.WORKSPACE + '/Dockerfile'
         writeFile file: 'anchore_images', text: imageLine
         anchore name: 'anchore_images', inputQueries: [[query: 'list-packages all'], [query: 'list-files all'], [query: 'cve-scan all'], [query: 'show-pkg-diffs base']]
 
