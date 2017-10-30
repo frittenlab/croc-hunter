@@ -10,6 +10,7 @@
   "container_repo": {
     "host": "docker.io",
     "master_acct": "spearce",
+    "alt_acct": "spearce",
     "jenkins_creds_id": "docker_creds",
     "repo": "croc-hunter",
     "dockeremail": ".",
