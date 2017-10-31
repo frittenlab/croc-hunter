@@ -41,7 +41,7 @@ const (
 				<canvas id="canvasEnemy" width="800" height="500" ></canvas>
 				<canvas id="canvasJet" width="800" height="500" ></canvas>
 				<canvas id="canvasHud" width="800" height="500" ></canvas>
-				<script src='/static/game2.js'></script>
+				<script src='/static/game1.js'></script>
 				<div class="details">
 				<strong>Hostname: </strong>%s<br>
 				<strong>Release: </strong>%s<br>
@@ -76,7 +76,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		commit = "not present"
 	}
 	if powered == "" {
-		powered = "deis"
+		powered = "SysEleven"
 	}
 
 	fmt.Fprintf(w, html, hostname, release, commit, powered)
