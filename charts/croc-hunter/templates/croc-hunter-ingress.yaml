@@ -18,7 +18,7 @@ spec:
           servicePort: {{ .Values.servicePort }}
 {{- if .Values.ingress.tls }}
   tls:
-  - secretName: {{ .Values.ingress.hostname | quote }}
+  - secretName: {{ .Values.ingress.tlsSecret | quote }}
     hosts:
       - {{ .Values.ingress.hostname | quote }}
 {{- end -}}

@@ -23,6 +23,7 @@ ingress:
      kubernetes.io/ingress.class: nginx
      kubernetes.io/tls-acme: "true"
   tls: true
+  tlsSecret: unipig-tls-certs
 ## PodDisruptionBudget
 pdb:
   enabled: false
