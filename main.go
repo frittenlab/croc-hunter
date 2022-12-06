@@ -45,7 +45,6 @@ const (
 				<div class="details">
 				<strong>Hostname: </strong>%s<br>
 				<strong>Release: </strong>%s<br>
-				<strong>Commit: </strong>%s<br>
 				<strong>Powered By: </strong>%s<br>
 				</div>
 			</body>
@@ -65,19 +64,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("could not get hostname: %s", err)
 	}
 
-	release := os.Getenv("WORKFLOW_RELEASE")
-	commit := os.Getenv("GIT_SHA")
+	release := os.Getenv("RELEASE")
 	powered := os.Getenv("POWERED_BY")
 
 	if release == "" {
-		release = "unknown"
-	}
-	if commit == "" {
-		commit = "not present"
+		release = "2022"
 	}
 	if powered == "" {
 		powered = "SysEleven"
 	}
 
-	fmt.Fprintf(w, html, hostname, release, commit, powered)
+	fmt.Fprintf(w, html, hostname, release, powered)
 }
